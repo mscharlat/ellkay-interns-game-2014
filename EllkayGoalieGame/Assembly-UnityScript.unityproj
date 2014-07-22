@@ -46,6 +46,8 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\GameFlow_1.js" />
+     <Compile Include="Assets\Scripts\JayScript.js" />
      <Compile Include="Assets\Scripts\MoveGoalie.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
