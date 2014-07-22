@@ -1,7 +1,8 @@
 ﻿#pragma strict
 
 var anim : Animator;
-
+var whichAnimL : int;
+var whichAnimR : int;
 
 function Start () {
 	anim = GetComponent("Animator");
@@ -24,10 +25,21 @@ function Update () {
 				anim.SetTrigger("TR");
 			}
 			if(touchPosition.x >= Screen.width/3*2 && touchPosition.x <= Screen.width && touchPosition.y >= 0 && touchPosition.y <= Screen.height/3) {
-				anim.SetTrigger("BR");
+				whichAnimR = Mathf.Round(Random.Range(0.5,2));
+				if (whichAnimR == 1) {
+					anim.SetTrigger("BR2");
+				} else {
+					anim.SetTrigger("BR");
+				}
+				
 			}
 			if(touchPosition.x >= 0 && touchPosition.x <= Screen.width/3 && touchPosition.y >= 0 && touchPosition.y <= Screen.height/3) {
+				whichAnimL = Mathf.Round(Random.Range(0.5,2));
+				if (whichAnimL == 1) {
+					anim.SetTrigger("BL2");
+				} else {
 				anim.SetTrigger("BL");
+				}
 			}
 			if(touchPosition.x >= 0 && touchPosition.x <= Screen.width/3 && touchPosition.y >= Screen.height/3 && touchPosition.y <= Screen.height/3*2) {
 				anim.SetTrigger("LM");
