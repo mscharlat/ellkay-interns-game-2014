@@ -1,13 +1,18 @@
 ﻿#pragma strict
-
+var startPosX =-0.002835695;
+var startPosY = 0.9366317;
 var anim : Animator;
-var whichAnimL : int;
-var whichAnimR : int;
+static var whichBool : String;
+var sRendererGoalie : SpriteRenderer;
+var goalie : GameObject;
 
 function Start () {
-	anim = GetComponent("Animator");
+	anim = GetComponent("Animator");	
+	whichBool = "";
+	sRendererGoalie = GetComponent("SpriteRenderer");
 }
-function Update () {
+function Update () 
+{
 	
 	if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) 
 		{
@@ -16,7 +21,9 @@ function Update () {
 			Debug.Log(touchPosition);
 			
 			if(touchPosition.x >= 0 && touchPosition.x <= Screen.width/3 && touchPosition.y >= Screen.height/3*2 && touchPosition.y <= Screen.height) {
-				anim.SetTrigger("TL");
+				anim.SetBool("TL", true);
+				whichBool += "TL";
+				
 			}
 			if (touchPosition.x >= Screen.width/3 && touchPosition.x <= Screen.width/3*2 && touchPosition.y >= Screen.height/3*2 && touchPosition.y <= Screen.height) {
 				anim.SetTrigger("TM");
@@ -25,28 +32,69 @@ function Update () {
 				anim.SetTrigger("TR");
 			}
 			if(touchPosition.x >= Screen.width/3*2 && touchPosition.x <= Screen.width && touchPosition.y >= 0 && touchPosition.y <= Screen.height/3) {
-				whichAnimR = Mathf.Round(Random.Range(0.5,2));
-				if (whichAnimR == 1) {
-					anim.SetTrigger("BR2");
-				} else {
-					anim.SetTrigger("BR");
-				}
+				anim.SetTrigger("BR");
 				
 			}
 			if(touchPosition.x >= 0 && touchPosition.x <= Screen.width/3 && touchPosition.y >= 0 && touchPosition.y <= Screen.height/3) {
-				whichAnimL = Mathf.Round(Random.Range(0.5,2));
-				if (whichAnimL == 1) {
-					anim.SetTrigger("BL2");
-				} else {
 				anim.SetTrigger("BL");
-				}
+				
 			}
 			if(touchPosition.x >= 0 && touchPosition.x <= Screen.width/3 && touchPosition.y >= Screen.height/3 && touchPosition.y <= Screen.height/3*2) {
 				anim.SetTrigger("LM");
 			}
 			if(touchPosition.x >= Screen.width/3*2 && touchPosition.x <= Screen.width && touchPosition.y >= Screen.height/3 && touchPosition.y <= Screen.height/3*2) {
-				anim.SetTrigger("RM");
+				anim.SetTrigger("RM");	
 			}
 		}
-		
+
+		// Button Inputs
+			if(Input.GetKey(KeyCode.Q)) 
+			{
+				anim.SetBool("TL", true);
+				whichBool += "TL";
+				//iTween.FadeTo(this,{"a":0, "onComplete":"Destroy", "time":"velocity"});
+			}
+			if (Input.GetKey(KeyCode.W)) 
+			{
+				anim.SetTrigger("TM");
+			
+			}
+			if(Input.GetKey(KeyCode.E)) 
+			{
+				anim.SetTrigger("TR");
+			}
+			if(Input.GetKey(KeyCode.D)) 
+			{
+				anim.SetTrigger("BR");
+			}
+			if(Input.GetKey(KeyCode.A)) 
+			{
+				anim.SetTrigger("BL");
+			}
+			if(Input.GetKey(KeyCode.K)) 
+			{
+				anim.SetTrigger("LM");
+			}
+			if(Input.GetKey(KeyCode.L)) 
+			{
+				anim.SetTrigger("RM");
+			}
+				
+}
+
+function OnCollisionEnter2D(collision : Collision2D) {
+   if (collision.gameObject.tag == "ball") {
+       
+      fade();
+       
+   }
+}
+
+function fade() {
+ 	iTween.FadeTo(goalie,{"alpha":0, "time":1});
+}
+
+function Reset () {
+	Debug.Log("Reset");
+	iTween.FadeTo(goalie,{"alpha":1, "time":1});
 }

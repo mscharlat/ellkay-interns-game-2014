@@ -14,9 +14,7 @@ var speedBall = 0;
 var difficulty = 0.0;
 var saves : GUIText;
 var score : int;
-//var spriteRenderer : SpriteRenderer;
-
-
+var sRenderer : SpriteRenderer;
 
 function ChoosingQuadrant()
 {
@@ -56,8 +54,9 @@ switch(chooseQuadrant){
 function Start () {
 	score = 0;
 	this.collider2D.enabled = false;
+	sRenderer = this.GetComponent("SpriteRenderer");
 	ChoosingQuadrant();
-
+	
 	Xspeed= Xcomponent/(100 * difficulty);
 	Yspeed= Ycomponent/(100 * difficulty);
 }
@@ -69,7 +68,7 @@ function Update () {
 
 	if(this.transform.localScale.x > .005 && this.transform.localScale.y > .005) {
 		this.collider2D.enabled = true;
-		//this.spriteRenderer.color = Color.yellow;
+		sRenderer.color = Color.yellow;
 		Debug.Log("Turned Yellow");
 
 	}
@@ -95,5 +94,5 @@ function OnCollisionEnter2D(collision : Collision2D) {
    }
 }
 function GameOver() {
-Debug.Log("GameOver");
+	Debug.Log("GameOver");
 }

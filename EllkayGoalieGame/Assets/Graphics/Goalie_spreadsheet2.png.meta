@@ -1,6 +1,13 @@
 fileFormatVersion: 2
 guid: ef113b62666954b81acbb66f5b99bab2
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: Goalie_spreadsheet2_0
+    21300002: Goalie_spreadsheet2_1
+    21300004: Goalie_spreadsheet2_2
+    21300006: Goalie_spreadsheet2_3
+    21300008: Goalie_spreadsheet2_4
+    21300010: Goalie_spreadsheet2_5
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -35,6 +42,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 200
   alphaIsTransparency: 1
   textureType: 8
@@ -54,6 +62,7 @@ TextureImporter:
         height: 91
       alignment: 0
       pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: Goalie_spreadsheet2_1
       rect:
         serializedVersion: 2
@@ -63,6 +72,7 @@ TextureImporter:
         height: 57
       alignment: 0
       pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: Goalie_spreadsheet2_2
       rect:
         serializedVersion: 2
@@ -72,6 +82,7 @@ TextureImporter:
         height: 109
       alignment: 0
       pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: Goalie_spreadsheet2_3
       rect:
         serializedVersion: 2
@@ -81,6 +92,7 @@ TextureImporter:
         height: 53
       alignment: 0
       pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: Goalie_spreadsheet2_4
       rect:
         serializedVersion: 2
@@ -90,6 +102,7 @@ TextureImporter:
         height: 83
       alignment: 0
       pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: Goalie_spreadsheet2_5
       rect:
         serializedVersion: 2
@@ -99,5 +112,6 @@ TextureImporter:
         height: 82
       alignment: 0
       pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
