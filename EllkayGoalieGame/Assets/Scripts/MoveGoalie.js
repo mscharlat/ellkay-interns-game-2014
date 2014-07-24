@@ -22,28 +22,41 @@ function Update ()
 			
 			if(touchPosition.x >= 0 && touchPosition.x <= Screen.width/3 && touchPosition.y >= Screen.height/3*2 && touchPosition.y <= Screen.height) {
 				anim.SetBool("TL", true);
-				whichBool += "TL";
+				if (whichBool != "TL") {
+					whichBool += "TL";
+				}	
 				
 			}
 			if (touchPosition.x >= Screen.width/3 && touchPosition.x <= Screen.width/3*2 && touchPosition.y >= Screen.height/3*2 && touchPosition.y <= Screen.height) {
-				anim.SetTrigger("TM");
+				if (whichBool != "TM") {
+				anim.SetBool("TM", true);
+				}
 			}
 			if(touchPosition.x >= Screen.width/3*2 && touchPosition.x <= Screen.width && touchPosition.y >= Screen.height/3*2 && touchPosition.y <= Screen.height) {
-				anim.SetTrigger("TR");
+				anim.SetBool("TR", true);
+				if (whichBool != "TR") {
+					whichBool += "TR";
+				}
 			}
 			if(touchPosition.x >= Screen.width/3*2 && touchPosition.x <= Screen.width && touchPosition.y >= 0 && touchPosition.y <= Screen.height/3) {
-				anim.SetTrigger("BR");
-				
+				if (whichBool != "BR") {
+				anim.SetBool("BR", true);
+				}
 			}
 			if(touchPosition.x >= 0 && touchPosition.x <= Screen.width/3 && touchPosition.y >= 0 && touchPosition.y <= Screen.height/3) {
-				anim.SetTrigger("BL");
-				
+				if (whichBool != "BL") {
+				anim.SetBool("BL", true);
+				}
 			}
 			if(touchPosition.x >= 0 && touchPosition.x <= Screen.width/3 && touchPosition.y >= Screen.height/3 && touchPosition.y <= Screen.height/3*2) {
-				anim.SetTrigger("LM");
+				if (whichBool != "LM") {
+				anim.SetBool("LM", true);
+				}
 			}
 			if(touchPosition.x >= Screen.width/3*2 && touchPosition.x <= Screen.width && touchPosition.y >= Screen.height/3 && touchPosition.y <= Screen.height/3*2) {
-				anim.SetTrigger("RM");	
+				if (whichBool != "RM") {
+				anim.SetBool("RM", true);	
+				}
 			}
 		}
 
@@ -51,40 +64,60 @@ function Update ()
 			if(Input.GetKey(KeyCode.Q)) 
 			{
 				anim.SetBool("TL", true);
-				whichBool += "TL";
+				if (whichBool != "TL") {
+					whichBool += "TL";
+				}
 				//iTween.FadeTo(this,{"a":0, "onComplete":"Destroy", "time":"velocity"});
 			}
 			if (Input.GetKey(KeyCode.W)) 
 			{
-				anim.SetTrigger("TM");
+				anim.SetBool("TM", true);
+				if (whichBool != "TM") {
+					whichBool += "TM";
+				}	
 			
 			}
 			if(Input.GetKey(KeyCode.E)) 
 			{
-				anim.SetTrigger("TR");
+				anim.SetBool("TR", true);
+				if (whichBool != "TR") {
+					whichBool += "TR";
+				}
 			}
 			if(Input.GetKey(KeyCode.D)) 
 			{
-				anim.SetTrigger("BR");
+				anim.SetBool("BR", true);
+				if (whichBool != "BR") {
+					whichBool += "BR";
+				}	
 			}
 			if(Input.GetKey(KeyCode.A)) 
 			{
-				anim.SetTrigger("BL");
+				anim.SetBool("BL", true);
+				if (whichBool != "BL") {
+					whichBool += "BL";
+				}	
 			}
 			if(Input.GetKey(KeyCode.K)) 
 			{
-				anim.SetTrigger("LM");
+				anim.SetBool("LM", true);
+				if (whichBool != "LM") {
+					whichBool += "LM";
+				}	
 			}
 			if(Input.GetKey(KeyCode.L)) 
 			{
-				anim.SetTrigger("RM");
+				anim.SetBool("RM", true);
+				if (whichBool != "RM") {
+					whichBool += "RM";
+				}	
 			}
 				
 }
 
 function OnCollisionEnter2D(collision : Collision2D) {
    if (collision.gameObject.tag == "ball") {
-       
+      goalie.collider2D.enabled = false;
       fade();
        
    }
@@ -95,6 +128,13 @@ function fade() {
 }
 
 function Reset () {
+	anim.SetBool(whichBool, false);
+	Debug.Log(whichBool);
 	Debug.Log("Reset");
-	iTween.FadeTo(goalie,{"alpha":1, "time":1});
+	iTween.FadeTo(goalie,{"alpha":1, "time":.5});
+	resetWhichBool();
+}
+
+function resetWhichBool() {
+	whichBool = "";
 }
